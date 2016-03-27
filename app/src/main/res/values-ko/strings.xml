@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">파일 뷰어</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7582881376117621/8502778392</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">환경설정</string>
+    <string name="title_settings">환경설정</string>
+    <string name="title_guide">제품가이드</string>
+    <string name="title_image">이미지</string>
+    <string name="title_video">비디오</string>
+    <string name="title_audio">오디오</string>
+    <string name="title_file">저장소</string>
+    <string name="cate_title">기타</string>
+    <string name="title_share">공유</string>
+    <string name="title_share_intent">File Viewer 공유</string>
+    <string name="product_version">제품 버전 : </string>
+    <string name="title_activity_guide">제품가이드</string>
+    <string name="title_activity_setting">환경설정</string>
+</resources>
