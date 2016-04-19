@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.roadbook.filemanager.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:orientation="vertical"
     android:weightSum="10">
@@ -19,6 +18,7 @@
             android:id="@+id/grid_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:numColumns="2">
         </GridView>
     </LinearLayout>

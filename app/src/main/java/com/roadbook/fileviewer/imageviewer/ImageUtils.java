@@ -10,6 +10,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 
 import com.roadbook.fileviewer.common.MediaData;
@@ -35,8 +36,16 @@ public class ImageUtils
                 MediaStore.Images.Thumbnails.MINI_KIND,
                 options);
         Bitmap bitmap = getCenterBitmap(thumnailBm, 0);
-        Drawable videoImg = context.getResources().getDrawable(R.drawable.play,
-                context.getTheme());
+
+        Drawable videoImg = null;
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            videoImg = context.getDrawable(R.drawable.play_btn);
+        }
+        else
+        {
+            videoImg = context.getResources().getDrawable(R.drawable.play_btn);
+        }
         Bitmap videoBitmap = ((BitmapDrawable) videoImg).getBitmap();
         return overlayBitmap(bitmap, videoBitmap);
     }

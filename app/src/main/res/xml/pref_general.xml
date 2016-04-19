@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/preference_setting_cate_title"
+        android:key="pref_key_storage_settings"
+        android:layout="@layout/pref_category">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="hidden_file_state"
+            android:summary="@string/preference_setting_desc"
+            android:title="@string/preference_setting_title"
+            android:layout="@layout/pref_checkbox"/>
+    </PreferenceCategory>
+</PreferenceScreen>

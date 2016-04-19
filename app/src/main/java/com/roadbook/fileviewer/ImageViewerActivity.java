@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
@@ -16,22 +17,23 @@ import com.roadbook.fileviewer.imageviewer.ImageUtils;
 
 public class ImageViewerActivity extends AppCompatActivity
 {
-    private ActionBar mActionBar = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
+        setContentView(R.layout.imgview_action_bar);
 
-        mActionBar = this.getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
         String imagePath = i.getStringExtra("IMAGE_PATH");
         int orientation = i.getIntExtra("ORIENTATION", 0);
         String title = i.getStringExtra("TITLE");
-        mActionBar.setTitle(title);
+        actionBar.setTitle(title);
 
         showImageView(imagePath, orientation);
     }

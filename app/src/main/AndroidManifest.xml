@@ -10,13 +10,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,19 +24,30 @@
             android:name=".SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-        <activity android:name=".MediaGridActivity" />
-        <activity android:name=".ImageViewerActivity" />
-        <activity android:name=".VideoPlayerActivity" />
-        <activity android:name=".FileGridActivity" />
-        <activity android:name=".videoviewer.MusicListActivity" />
+        <activity
+            android:name=".MediaGridActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ImageViewerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".FileGridActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".GuideActivity"
             android:label="@string/title_activity_guide"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+
         <activity
-            android:name=".SettingActivity"
-            android:label="@string/title_activity_setting">
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

@@ -1,9 +1,13 @@
 package com.roadbook.fileviewer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +18,7 @@ import com.roadbook.fileviewer.common.GetMediaData;
 import com.roadbook.fileviewer.imageviewer.ImageAdapter;
 import com.roadbook.fileviewer.common.MediaData;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -29,10 +34,18 @@ public class MediaGridActivity extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_imggrid);
+        setContentView(R.layout.media_action_bar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         mActionBar = this.getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
+
+        //mActionBar.setDisplayShowCustomEnabled(true);
+
+        //View customView = LayoutInflater.from(this).inflate(R.layout.custom_action, null);
+        //mActionBar.setCustomView(customView);
 
         Intent i = this.getIntent();
         mType = i.getIntExtra(FWValue.TYPE, FWValue.TYPE_IMAGE);
@@ -65,6 +78,13 @@ public class MediaGridActivity extends AppCompatActivity implements AdapterView.
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.action_bi, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId())
@@ -89,9 +109,13 @@ public class MediaGridActivity extends AppCompatActivity implements AdapterView.
                 showOriImage(aPos);
                 break;
             case FWValue.TYPE_VIDEO:
-                showVideoPlayer(mMediaList.get(aPos).mediapath);
+                showVideoPlayer(mMediaList.get(aPos).mediapath,
+                        mMediaList.get(aPos).mediatitle);
                 break;
             case FWValue.TYPE_AUDIO:
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setDataAndType(Uri.fromFile(new File(mMediaList.get(aPos).mediapath)), "audio/*");
+                startActivity(i);
                 break;
             default:
                 break;
@@ -107,10 +131,11 @@ public class MediaGridActivity extends AppCompatActivity implements AdapterView.
         startActivity(i);
     }
 
-    private void showVideoPlayer(String aVideoPath)
+    private void showVideoPlayer(String aVideoPath, String aVideoTitle)
     {
         Intent i = new Intent(this, VideoPlayerActivity.class);
         i.putExtra("VIDEO_PATH", aVideoPath);
+        i.putExtra("TITLE", aVideoTitle);
         startActivity(i);
     }
 }

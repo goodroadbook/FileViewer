@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,7 +36,10 @@ public class FileGridActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_file_grid);
+        setContentView(R.layout.file_action_bar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -99,6 +103,7 @@ public class FileGridActivity extends AppCompatActivity implements AdapterView.O
                 type = "video/*";
                 break;
             case FWValue.FILE_TYPE_AUDIO:
+                type = "audio/*";
                 break;
             case FWValue.FILE_TYPE_ACROBAT:
                 type = "application/pdf";

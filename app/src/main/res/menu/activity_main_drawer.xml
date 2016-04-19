@@ -2,19 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/menu_top"
-        android:checkableBehavior="none">
-        <item
-            android:id="@+id/nav_guide"
-            android:icon="@drawable/menu_icon09"
-            android:title="@string/title_guide" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/menu_icon08"
-            android:title="@string/title_settings" />
-    </group>
-
-    <group
         android:id="@+id/menu_bottom"
         android:checkableBehavior="none">
             <item
@@ -34,6 +21,20 @@
                 android:icon="@drawable/menu_icon07"
                 android:title="@string/title_file" />
     </group>
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_guide"
+            android:icon="@drawable/menu_icon09"
+            android:title="@string/title_guide" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/menu_icon08"
+            android:title="@string/title_settings" />
+    </group>
+
 
     <item android:title="@string/cate_title">
         <menu>

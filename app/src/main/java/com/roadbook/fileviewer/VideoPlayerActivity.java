@@ -2,7 +2,10 @@ package com.roadbook.fileviewer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -25,16 +28,39 @@ public class VideoPlayerActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_videoplay);
+        setContentView(R.layout.vplayer_action_bar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
         mVideoPath = i.getStringExtra("VIDEO_PATH");
+        String title = i.getStringExtra("TITLE");
+        actionBar.setTitle(title);
 
         mSurfaceView = (SurfaceView) findViewById(
                 R.id.surfaceview);
         mSurfaceView.setOnClickListener(this);
         mSurfaceholder = mSurfaceView.getHolder();
         mSurfaceholder.addCallback(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+
+        return true;
     }
 
     @Override
